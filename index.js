@@ -15,9 +15,9 @@ const writeData = (newCoffee) => {
   fs.writeFileSync("store/db.json", JSON.stringify(allCoffesDataArray));
 };
 
-const findCoffeeByCode = (code) => {
-  return allCoffesDataArray.find((coffee) => coffee.code === code);
-};
+const findCoffeeByCode = (id) => {
+  return allCoffesDataArray.find((coffee) => coffee.id ===id);
+  };
 
 allCoffesDataArray = readData();
 
@@ -26,8 +26,8 @@ app.get(`${generalSettings.baseUrl}/coffee`, (req, res) => {
 });
 
 app.get(`${generalSettings.baseUrl}/coffee/:code`, (req, res) => {
-  const code = +req.params.code;
-  const requestedCoffee = findCoffeeByCode(code);
+  const id = +req.params.id;
+  const requestedCoffee = findCoffeeByCode(id);
   res.send(JSON.stringify(requestedCoffee));
 });
 
