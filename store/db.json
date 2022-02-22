@@ -1,0 +1,7 @@
+[
+    { "id": 1, "type": "forest fruit", "price": 5, "strength": 5 },
+    { "id": 2, "type": "forest almond", "price": 5, "strength": 5 },
+    { "id": 3, "type": "forest black", "price": 6, "strength": 7 },
+    { "id": 4, "type": "volutto", "price": 3.5, "strength": 4 },
+    { "id": 5, "type": " nicaragua", "price": 5, "strength": 8 }
+  ]
