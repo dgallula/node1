@@ -4,11 +4,11 @@ import coffeeDal from "../data-access-layer/coffee-dal.js";
 let coffeesArray = [];
 
 const findCoffeeByCode = (code) => {
-  return coffeesArray.find((coffee) => coffee.code === code);
+  return coffeesArray.find((coffee) => coffee.id === id);
 };
 
 const getCoffeeIndex = (coffeeElement) => {
-  return coffeesArray.findIndex((coffee) => coffee.code === coffeeElement.code);
+  return coffeesArray.findIndex((coffee) => coffee.id === coffeeElement.id);
 };
 
 const checkValidation = (obj, method) => {
@@ -38,21 +38,21 @@ const getAllCoffeeData = () => {
   return coffeesArray;
 };
 
-const getByCode = (code) => {
+const getById = (id) => {
   getAllCoffeeData();
-  const requestedCoffee = findCoffeeByCode(code);
+  const requestedCoffee = findCoffeeByCode(id);
   return requestedCoffee;
 };
 
 const update = (code, coffeeBody) => {
   getAllCoffeeData();
   try {
-    let coffeeToUpdate = findCoffeeByCode(code);
+    let coffeeToUpdate = findCoffeeByCode(id);
     if (!coffeeToUpdate) {
       return { status: 404, message: "Sorry, the reqesred coffee not found" };
     }
     const coffeeIndex = getCoffeeIndex(coffeeToUpdate);
-    coffeeToUpdate = { code: code, ...coffeeBody };
+    coffeeToUpdate = { id: id, ...coffeeBody };
     const { error } = checkValidation(coffeeToUpdate, "put");
     if (error) {
       return { status: 400, message: error.details[0].message };
@@ -67,10 +67,10 @@ const update = (code, coffeeBody) => {
 
 const addNewCoffee = (coffeeObj) => {
   getAllCoffeeData();
-  const lastCode = coffeesArray[coffeesArray.length - 1].code;
+  const lastId = coffeesArray[coffeesArray.length - 1].Id;
 
   const preperedCoffeObj = {
-    code: lastCode + 1,
+    code: lastId + 1,
     ...coffeeObj,
   };
   const { error } = checkValidation(coffeeObj, "post");
@@ -82,7 +82,7 @@ const addNewCoffee = (coffeeObj) => {
 };
 export default {
   getAllCoffeeData,
-  getByCode,
+  getById,
   addNewCoffee,
   update,
 };
