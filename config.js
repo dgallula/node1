@@ -1,4 +1,5 @@
 const generalSettings = {
-    baseUrl: "/api",
-  };
-  export default generalSettings;
+  baseUrl: "/api",
+  port: 5000,
+};
+export default generalSettings;
