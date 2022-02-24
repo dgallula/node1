@@ -13,18 +13,18 @@ router.get(`${generalSettings.baseUrl}/coffe`, (req, res) => {
   }
 });
 
-router.get(`${generalSettings.baseUrl}/coffee/:code`, (req, res) => {
-  const code = +req.params.code;
-  const resultCoffeeByCode = coffeeBl.getByCode(code);
-  if (!resultCoffeeByCode) {
+router.get(`${generalSettings.baseUrl}/coffee/:id`, (req, res) => {
+  const id = +req.params.id;
+  const resultCoffeeById = coffeeBl.getById(id);
+  if (!resultCoffeeById) {
     res.status(404).send(`Sorry, the reqesred coffee not found`);
   }
-  res.send(resultCoffeeByCode);
+  res.send(resultCoffeeById);
 });
 
-router.put(`${generalSettings.baseUrl}/coffee/:code`, (req, res) => {
-  const code = +req.params.code;
-  const resultCoffee = coffeeBl.update(code, req.body);
+router.put(`${generalSettings.baseUrl}/coffee/:id`, (req, res) => {
+  const id = +req.params.id;
+  const resultCoffee = coffeeBl.update(id, req.body);
 
   resultCoffee.status
     ? res.status(resultCoffee.status).send(resultCoffee.message)
