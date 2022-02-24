@@ -1,6 +1,6 @@
 import express from "express";
 import generalSettings from "./config.js";
-import { router } from "./controllers/coffee-controller.js";
+import { router as router } from "./controllers/coffee-controllers.js"
 
 const app = express();
 app.use(express.json());

@@ -1,9 +1,9 @@
 import Joi from "joi";
-import coffeeDal from "../data-access-layer/coffee-dal.js";
+import coffeeDal from "../data-acces-layer/coffee-dal.js";
 
 let coffeesArray = [];
 
-const findCoffeeByCode = (code) => {
+const findCoffeeById = (id) => {
   return coffeesArray.find((coffee) => coffee.id === id);
 };
 
@@ -40,11 +40,11 @@ const getAllCoffeeData = () => {
 
 const getById = (id) => {
   getAllCoffeeData();
-  const requestedCoffee = findCoffeeByCode(id);
+  const requestedCoffee = findCoffeeById(id);
   return requestedCoffee;
 };
 
-const update = (code, coffeeBody) => {
+const update = (id, coffeeBody) => {
   getAllCoffeeData();
   try {
     let coffeeToUpdate = findCoffeeByCode(id);

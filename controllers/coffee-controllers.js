@@ -1,5 +1,5 @@
 import express from "express";
-import coffeeBl from "../business-logic/coffee-bl.js";
+import coffeeBl from "../business-logic/coffe-bl.js"
 import generalSettings from "../config.js";
 
 const router = express.Router();
@@ -9,7 +9,7 @@ router.get(`${generalSettings.baseUrl}/coffe`, (req, res) => {
     const result = coffeeBl.getAllCoffeeData();
     res.send(result);
   } catch (error) {
-    res.status(500).send("Something got worng!");
+    res.status(500).send("Something got wrong!");
   }
 });
 
@@ -17,7 +17,7 @@ router.get(`${generalSettings.baseUrl}/coffee/:id`, (req, res) => {
   const id = +req.params.id;
   const resultCoffeeById = coffeeBl.getById(id);
   if (!resultCoffeeById) {
-    res.status(404).send(`Sorry, the reqesred coffee not found`);
+    res.status(404).send(`Sorry, the requerested coffee not found`);
   }
   res.send(resultCoffeeById);
 });
@@ -41,11 +41,13 @@ router.post(`${generalSettings.baseUrl}/coffee`, (req, res) => {
 router.get(`*`, (req, res) => {
   res
     .status(404)
-    .send(`Sorry we couldn't find what you looking for, please try `);
+    .send(`Sorry we couldn't find what you looking for, please try again`);
 });
 router.post(`*`, (req, res) => {
   res
     .status(404)
     .send(`Sorry we couldn't find what you looking for, please try `);
 });
-export { router };
+export {
+  router
+};
